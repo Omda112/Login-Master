@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container w-75 text-center my-5">
+        <div class="group w-75 m-auto p-5">
+            <h1>Smart Login System</h1>
+            <input oninput="ValidateName()" id="signUpName" class="form-control my-3" placeholder="Enter your name" type="text">
+            <div id="nameAlert" class="alert alert-danger p-1 mt-2 d-none">
+                <small>name is not valid</small>
+            </div>
+            <input oninput="ValidateEmail()" id="signUpEmail" class="form-control my-3" placeholder="Enter your email" type="email">
+            <div id="emailAlert" class="alert alert-danger p-1 mt-2 d-none">
+                <small>Email is not valid</small>
+            </div>
+            <input oninput="ValidatePass()" id="signUpPassword" class="form-control my-3" placeholder="Enter Password" type="password">
+            <div id="passwordAlert" class="alert alert-danger p-1 mt-2 d-none">
+                <small>Password is not valid</small>
+            </div>
+            <button onclick="signUp()" class="btn btn-outline-info w-100 my-3">Sign Up</button>
+            <p class="text-white">You have an account?<a class="text-white" href="index.html"> Signin</a></p>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
