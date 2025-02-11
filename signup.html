@@ -9,25 +9,30 @@
 </head>
 <body>
     
-    <div class="container w-75 text-center my-5">
-        <div class="group w-75 m-auto p-5">
+    <div class="container-fluid text-center my-5">
+        <div class="group col-12 col-md-8 col-lg-6 m-auto p-5">
             <h1>Smart Login System</h1>
+            
             <input oninput="ValidateName()" id="signUpName" class="form-control my-3" placeholder="Enter your name" type="text">
             <div id="nameAlert" class="alert alert-danger p-1 mt-2 d-none">
-                <small>name is not valid</small>
+                <small>Name must be 3-15 characters, with lowercase letters, numbers, hyphens, or underscores.</small>
             </div>
+
             <input oninput="ValidateEmail()" id="signUpEmail" class="form-control my-3" placeholder="Enter your email" type="email">
             <div id="emailAlert" class="alert alert-danger p-1 mt-2 d-none">
-                <small>Email is not valid</small>
+                <small>Enter a valid email (e.g., example@domain.com).</small>
             </div>
+
             <input oninput="ValidatePass()" id="signUpPassword" class="form-control my-3" placeholder="Enter Password" type="password">
             <div id="passwordAlert" class="alert alert-danger p-1 mt-2 d-none">
-                <small>Password is not valid</small>
+                <small>Password must be at least 8 characters and include an uppercase letter, a number, and a special character.</small>
             </div>
+
             <button onclick="signUp()" class="btn btn-outline-info w-100 my-3">Sign Up</button>
-            <p class="text-white">You have an account?<a class="text-white" href="index.html"> Signin</a></p>
+            <p class="text-white">You have an account? <a class="text-white" href="index.html">Signin</a></p>
         </div>
     </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

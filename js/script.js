@@ -29,27 +29,37 @@ function signUp() {
         signUp_N: signUpName.value,
         signUp_E: signUpEmail.value,
         signUp_P: signUpPassword.value
-    }
+    };
+
     users.push(user);
     updateLocalStorage();
+    
+    window.location.href = "index.html";
 }
-
 
 function updateLocalStorage() {
     localStorage.setItem("users", JSON.stringify(users))
 }
 
 function login() {
+    var localUsers = JSON.parse(localStorage.getItem("users")) || [];
+    var isValidUser = false;
+
     for (var i = 0; i < localUsers.length; i++) {
         if (signinEmail.value == localUsers[i].signUp_E && signinPassword.value == localUsers[i].signUp_P) {
-            localStorage.setItem("username",localUsers[i].signUp_N)
+            localStorage.setItem("username", localUsers[i].signUp_N);
             window.location.href = "home.html";
-        }
-        else {
-            document.getElementById("incorrect").classList.remove("d-none")
+            isValidUser = true;
+            break;
         }
     }
+
+    if (!isValidUser) {
+        document.getElementById("incorrect").classList.remove("d-none");
+    }
 }
+
+
 
 
 function display(){
@@ -58,48 +68,55 @@ function display(){
 
 function ValidateName() {
     if (regex.name.value.test(signUpName.value)) {
-        localStorage.setItem("name", signUpName.value)
+        localStorage.setItem("name", signUpName.value);
         regex.name.status = true;
-        signUpName.classList.remove("is-invalid")
-        signUpName.classList.add("is-valid")
-        return true
+        signUpName.classList.remove("is-invalid");
+        signUpName.classList.add("is-valid");
+        nameAlert.classList.add("d-none");
+        return true;
     } else {
         regex.name.status = false;
-        signUpName.classList.remove("is-valid")
-        signUpName.classList.add("is-invalid")
-        nameAlert.classList.remove("d-none")
-        return false
+        signUpName.classList.remove("is-valid");
+        signUpName.classList.add("is-invalid");
+        nameAlert.classList.remove("d-none");
+        return false;
     }
 }
 
 function ValidateEmail() {
     if (regex.email.value.test(signUpEmail.value)) {
         regex.email.status = true;
-        signUpEmail.classList.remove("is-invalid")
-        signUpEmail.classList.add("is-valid")
-        return true
+        signUpEmail.classList.remove("is-invalid");
+        signUpEmail.classList.add("is-valid");
+        emailAlert.classList.add("d-none");
+        return true;
     } else {
         regex.email.status = false;
-        signUpEmail.classList.remove("is-valid")
-        signUpEmail.classList.add("is-invalid")
-        emailAlert.classList.remove("d-none")
-        return false
-
+        signUpEmail.classList.remove("is-valid");
+        signUpEmail.classList.add("is-invalid");
+        emailAlert.classList.remove("d-none");
+        return false;
     }
 }
 
 function ValidatePass() {
     if (regex.pass.value.test(signUpPassword.value)) {
         regex.pass.status = true;
-        signUpPassword.classList.add("is-valid")
-        signUpPassword.classList.remove("is-invalid")
-        return true
+        signUpPassword.classList.remove("is-invalid");
+        signUpPassword.classList.add("is-valid");
+        passwordAlert.classList.add("d-none");
+        return true;
     } else {
         regex.pass.status = false;
-        signUpPassword.classList.remove("is-valid")
-        signUpPassword.classList.add("is-invalid")
-        passwordAlert.classList.remove("d-none")
-        return false
+        signUpPassword.classList.remove("is-valid");
+        signUpPassword.classList.add("is-invalid");
+        passwordAlert.classList.remove("d-none");
+        return false;
     }
 }
 
+
+function logout() {
+    localStorage.removeItem("username"); 
+    window.location.href = "index.html";
+}
